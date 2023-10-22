@@ -1,0 +1,18 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF" /> <!-- Background color when selected -->
+    /> <!-- Corner radius for rounded corners -->
+    <padding
+        android:bottom="8dp"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp" /> <!-- Padding -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/grey_mild" /> <!-- Border for selected state -->
+    <item android:drawable="?android:attr/selectableItemBackground"> <!-- Ripple effect for selected state -->
+        <shape>
+            <solid android:color="#00000000" />
+        </shape>
+    </item>
+    <item android:drawable="?android:attr/actionModeShareDrawable" /> <!-- Custom icon for selected state -->
+</shape>

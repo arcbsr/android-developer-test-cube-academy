@@ -1,0 +1,42 @@
+<resources>
+	<string name="app_name">CubeAcademy</string>
+	<string name="your_nominations_title">Your nominations</string>
+	<string name="empty_body">once you submit a nomination, you will be able to SEE it here.</string>
+	<string name="create_new_nomination">Create New Nomination</string>
+	<string name="create_a_nomination">Create a nomination</string>
+	<string name="submit_nomination">Submit Nomination</string>
+	<string name="back">Back</string>
+	<string name="id_like_to_nominate">I’d like to nominate...</string>
+	<string name="id_like_to_nominate_subtitle">Please select a cube who you feel has done something honourable this month or just all round has a great work ethic.</string>
+	<string name="reason_title">I’d like to nominate THIS CUBE BECAUSE...</string>
+	<string name="reason_subtitle">Please let us know why you think this cube deserves the ‘cube of the month’ title 🏆⭐</string>
+	<string name="process_title">IS HOW WE CURRENTLY RUN <font color="#FFF70087">CUBE OF THE MONTH </font>FAIR?</string>
+	<string name="process_subtitle">As you know, out the nominees chosen, we spin a wheel to pick the cube of the month. What’s your opinion on this method?</string>
+	<string name="nomination_submitted">Nomination Submitted</string>
+	<string name="back_to_home">Back to home</string>
+	<string name="nomination_submitted_body">Thank you for taking the time to fill out this form! Why not nominate another cube?</string>
+	<string name="cubes_name"><font color="#FFF70087">*</font> Cube\'s name</string>
+	<string name="reasoning"><font color="#FFF70087">*</font> Reasoning</string>
+	<string name="reasoning_hint">Type the reason</string>
+
+	<string name="very_unfair">Very Unfair</string>
+	<string name="unfair">Unfair</string>
+	<string name="fair">Fair</string>
+	<string name="not_sure">Not Sure</string>
+	<string name="very_fair">Very Fair</string>
+
+	<string name="very_unfair_txt">very_unfair</string>
+	<string name="unfair_txt">unfair</string>
+	<string name="not_sure_txt">not_sure</string>
+	<string name="fair_txt">fair</string>
+	<string name="very_fair_txt">very_fair</string>
+
+	<string name="cancel">Cancel</string>
+	<string name="leave">Yes, leave page</string>
+	<string name="unknown_error">Error Found...</string>
+	<string name="select_option">Select Option</string>
+    <string name="no_data_found">No data found</string>
+	<string name="try_again">Please try again...</string>
+	<string name="nomination_receiver_action">nomination_receiver_action</string>
+	<string name="nomination_receiver_object">nomination_receiver_object</string>
+</resources>

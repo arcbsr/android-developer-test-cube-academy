@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<style name="bold_headline_large">
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">32sp</item>
+		<item name="android:lineHeight">48sp</item>
+		<item name="android:letterSpacing">0.02</item>
+	</style>
+
+	<style name="bold_headline_medium">
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">24sp</item>
+		<item name="android:lineHeight">38sp</item>
+		<item name="android:letterSpacing">0.02</item>
+	</style>
+
+	<style name="bold_headline_small">
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">18sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.02</item>
+	</style>
+
+	<style name="bold_headline_smallest">
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.023</item>
+	</style>
+
+	<style name="body">
+		<item name="android:fontFamily">@font/anonymous_pro_regular</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:lineHeight">24sp</item>
+	</style>
+
+	<style name="body_bold">
+		<item name="android:fontFamily">@font/anonymous_pro_bold</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:lineHeight">30sp</item>
+		<item name="android:letterSpacing">0.02</item>
+	</style>
+
+	<style name="bold_button">
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.02</item>
+	</style>
+
+	<style name="button">
+		<item name="android:background">@drawable/bg_button_primary</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="textAllCaps">true</item>
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.02</item>
+		<item name="android:elevation">6dp</item>
+		<item name="elevation">6dp</item>
+	</style>
+
+	<style name="button_outline">
+		<item name="android:background">@drawable/bg_outline_black</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="textAllCaps">true</item>
+		<item name="android:fontFamily">@font/poppins_bold</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.02</item>
+		<item name="android:elevation">6dp</item>
+		<item name="elevation">6dp</item>
+	</style>
+	<style name="spinner_style" parent="Widget.AppCompat.Spinner">
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textSize">14sp</item>
+		<item name="android:lineHeight">24sp</item>
+		<item name="android:letterSpacing">0.02</item>
+		<item name="android:dividerHeight">0dp</item>
+		<item name="android:paddingTop">5dp</item>
+		<item name="android:paddingBottom">5dp</item>
+		<item name="android:background">@drawable/bg_outline_gray</item>
+	</style>
+	<style name="radio_button_outline">
+		<item name="android:drawablePadding">10dp</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:background">@drawable/radio_button_selector</item>
+		<item name="android:layoutDirection">rtl</item>
+		<item name="android:textAlignment">textStart</item>
+		<item name="android:layout_gravity">start</item>
+		<item name="android:padding">14dp</item>
+		<item name="android:layout_marginTop">8dp</item>
+	</style>
+
+</resources>
