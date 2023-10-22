@@ -42,12 +42,12 @@ This Android application is a robust and efficient mobile solution developed usi
 
 
 #### Libraries Used
-* [Kotlin Coroutine/Flow](https://kotlinlang.org/docs/coroutines-overview.html) [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) [Retrofit2](https://square.github.io/retrofit/) [Junit4](https://junit.org/junit4/) [Mockito](https://site.mockito.org/)
+* [Kotlin Coroutine/Flow](https://kotlinlang.org/docs/coroutines-overview.html)    [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)    [Retrofit2](https://square.github.io/retrofit/) [Junit4](https://junit.org/junit4/)    [Mockito](https://site.mockito.org/)
 
 #### Testing
-* UnitTest
-    * Mock APIs
-    * Activities
+* Mock APIs
+* Activities
+* UI
 
 ## Thanks
-I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information. please get in touch with us at [Md Rafiur Rahman](mailto:rafiur.267@gmail.com)
+I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information. please get in touch with me at [Md Rafiur Rahman](mailto:rafiur.267@gmail.com)
