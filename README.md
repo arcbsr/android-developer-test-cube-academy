@@ -65,4 +65,4 @@ Unit tests are written to validate the functionality of individual components, e
     * Activities
 
 ## Thanks
-### I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information. please get in touch with us at [Md Rafiur Rahman](mailto:rafiur.267@gmail.com)
+I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information. please get in touch with us at [Md Rafiur Rahman](mailto:rafiur.267@gmail.com)
