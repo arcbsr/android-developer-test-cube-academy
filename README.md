@@ -1,11 +1,11 @@
 
  
-## Overview
+### Overview
 This Android application is a robust and efficient mobile solution developed using the Kotlin programming language and incorporating modern architectural and development principles. The app follows the Model-View-ViewModel (MVVM) architecture pattern to ensure the separation of concerns and maintainable code. It also leverages Dagger for dependency injection, Retrofit for handling API services, Clean Architecture for code organization, and Coroutines for asynchronous operations.
 
 
 
-### Functionalities
+#### Functionalities
 * Screen-1: shows a list of nominations in the recycle view
 * Screen-2: Create a new nomination item and update into screen-1 list
 * Screen-3: After submission, it is a confirmation screen.
@@ -14,7 +14,7 @@ This Android application is a robust and efficient mobile solution developed usi
 - API documentation: [OpenAPI docs](https://cube-academy-api.cubeapis.com/docs)
 
 
-## Key Features:
+#### Key Features:
 
 * The app is structured around the MVVM architecture, separating the presentation logic (ViewModel) from the UI (View) and the data layer (Model). This enhances code maintainability, testability, and scalability.
 
@@ -41,14 +41,10 @@ This Android application is a robust and efficient mobile solution developed usi
 * Unit tests are written to validate the functionality of individual components, ensuring that the app remains robust and reliable.
 
 
-### Libraries Used
-* [Kotlin Coroutine/Flow](https://kotlinlang.org/docs/coroutines-overview.html)
-* [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
-* [Retrofit2](https://square.github.io/retrofit/)
-* [Junit4](https://junit.org/junit4/)
-* [Mockito](https://site.mockito.org/)
+#### Libraries Used
+* [Kotlin Coroutine/Flow](https://kotlinlang.org/docs/coroutines-overview.html) [Hilt](https://developer.android.com/training/dependency-injection/hilt-android) [Retrofit2](https://square.github.io/retrofit/) [Junit4](https://junit.org/junit4/) [Mockito](https://site.mockito.org/)
 
-### Testing
+#### Testing
 * UnitTest
     * Mock APIs
     * Activities
