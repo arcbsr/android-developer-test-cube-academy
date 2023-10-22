@@ -10,6 +10,10 @@ This Android application is a robust and efficient mobile solution developed usi
 * Screen-2: Create a new nomination item and update into screen-1 list
 * Screen-3: After submission, it is a confirmation screen.
 
+- Designs: [Figma](https://www.figma.com/file/BAOzJacpI4IemeawyFlw5j/Mobile-Mini-Task-flow?type=design&node-id=2818-8902&mode=design&t=31N76gmtRrCVHnj9-4)
+- API documentation: [OpenAPI docs](https://cube-academy-api.cubeapis.com/docs)
+
+
 ## Key Features:
 
 ### App Architecture
@@ -61,4 +65,4 @@ Unit tests are written to validate the functionality of individual components, e
     * Activities
 
 ## Thanks
-### I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information.
+### I thoroughly enjoyed the challenge presented by the test, and I am eager to discuss my solutions and explore how I can contribute. Please feel free to reach out if you need any further clarifications or additional information. please get in touch with us at [Md Rafiur Rahman](mailto:rafiur.267@gmail.com)
