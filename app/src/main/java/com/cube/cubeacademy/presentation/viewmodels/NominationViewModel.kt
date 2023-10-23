@@ -7,6 +7,7 @@ import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.NominationWithNominee
 import com.cube.cubeacademy.lib.models.Nominee
 import com.cube.cubeacademy.lib.models.ResponseWrapper
+import com.cube.cubeacademy.lib.models.singletone.NewNominationHolder
 import com.cube.cubeacademy.lib.models.singletone.NomineeManager
 import com.cube.cubeacademy.lib.models.withNominee
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,43 +26,39 @@ class NominationViewModel @Inject constructor(private val useCase: UseCase) : Vi
     private suspend fun fetchNominationsData() {
         useCase.getAllNominations().onStart {
             _state.value = NominationListViewState.IsLoading(true)
-
+            NewNominationHolder.getInstance().clearNominations()
         }.catch {
             _state.value = NominationListViewState.IsLoading(false)
-            _state.value =
-                NominationListViewState.ErrorResponse("OnCatch")
-        }
-            .collect {
-                _state.value = NominationListViewState.IsLoading(false)
-                when (it) {
-                    is ResponseWrapper.GenericError -> {
-                        it.error?.let { msg ->
-                            _state.value =
-                                NominationListViewState.ErrorResponse("${it.code} : $msg")
-
-                        }
-                    }
-
-                    ResponseWrapper.NetworkError -> {
-                        NominationListViewState.ErrorResponse("No Internet")
-                    }
-
-                    is ResponseWrapper.Success -> {
-                        val nominations = it.value
-                        val nominationsWithNominee = mutableListOf<NominationWithNominee>()
-                        for (nomination in nominations) {
-                            val nominee = findNomineeByID(nomination.nomineeId)
-                            nominationsWithNominee.add(
-                                nomination.withNominee(nominee)
-                            )
-                        }
-                        _state.value =
-                            NominationListViewState.SuccessResponse(nominationsWithNominee)
-
+            _state.value = NominationListViewState.ErrorResponse("OnCatch")
+        }.collect {
+            _state.value = NominationListViewState.IsLoading(false)
+            when (it) {
+                is ResponseWrapper.GenericError -> {
+                    it.error?.let { msg ->
+                        _state.value = NominationListViewState.ErrorResponse("${it.code} : $msg")
 
                     }
                 }
+
+                ResponseWrapper.NetworkError -> {
+                    NominationListViewState.ErrorResponse("No Internet")
+                }
+
+                is ResponseWrapper.Success -> {
+                    val nominations = it.value
+                    val nominationsWithNominee = mutableListOf<NominationWithNominee>()
+                    for (nomination in nominations) {
+                        val nominee = findNomineeByID(nomination.nomineeId)
+                        nominationsWithNominee.add(
+                            nomination.withNominee(nominee)
+                        )
+                    }
+                    _state.value = NominationListViewState.SuccessResponse(nominationsWithNominee)
+
+
+                }
             }
+        }
 
     }
 
@@ -75,28 +72,27 @@ class NominationViewModel @Inject constructor(private val useCase: UseCase) : Vi
                 _state.value = NominationListViewState.IsLoading(true)
             }.catch {
                 _state.value = NominationListViewState.IsLoading(false)
-            }
-                .collect {
-                    _state.value = NominationListViewState.IsLoading(false)
-                    when (it) {
-                        is ResponseWrapper.GenericError -> {
-                            it.error?.let { msg ->
-                                _state.value =
-                                    NominationListViewState.ErrorResponse("${it.code} : $msg")
+            }.collect {
+                _state.value = NominationListViewState.IsLoading(false)
+                when (it) {
+                    is ResponseWrapper.GenericError -> {
+                        it.error?.let { msg ->
+                            _state.value =
+                                NominationListViewState.ErrorResponse("${it.code} : $msg")
 
-                            }
-                        }
-
-                        is ResponseWrapper.NetworkError -> {
-                            NominationListViewState.ErrorResponse("Unknown Error")
-                        }
-
-                        is ResponseWrapper.Success -> {
-                            NomineeManager.getInstance().addNominees(it.value)
-                            fetchNominationsData()
                         }
                     }
+
+                    is ResponseWrapper.NetworkError -> {
+                        NominationListViewState.ErrorResponse("No Internet")
+                    }
+
+                    is ResponseWrapper.Success -> {
+                        NomineeManager.getInstance().addNominees(it.value)
+                        fetchNominationsData()
+                    }
                 }
+            }
         }
 
     }
@@ -107,8 +103,7 @@ class NominationViewModel @Inject constructor(private val useCase: UseCase) : Vi
         if (currentState is NominationListViewState.SuccessResponse) {
             val updatedData = currentState.nominationList.toMutableList()
             updatedData.add(newNominationItem)
-            _state.value =
-                NominationListViewState.SuccessResponse(updatedData)
+            _state.value = NominationListViewState.SuccessResponse(updatedData)
         }
     }
 
@@ -127,6 +122,13 @@ class NominationViewModel @Inject constructor(private val useCase: UseCase) : Vi
             nominee = Nominee("", "Unknown", "")
         }
         return nominee
+    }
+
+    fun refresh() {
+        NewNominationHolder.getInstance().getNominations().map {
+            addNewNomination(it)
+            NewNominationHolder.getInstance().clearNominations()
+        }
     }
 
 }

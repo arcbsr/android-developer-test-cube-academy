@@ -119,7 +119,7 @@ class CreateNominationActivity : AppCompatActivity(), FormEnabledCallback {
             }
 
             is CreateViewState.SuccessResponse -> {
-                broadcastToMainActivity(state.nomination)
+                gotoSubmittedActivity()
             }
 
             is CreateViewState.IsLoading -> {
@@ -133,13 +133,6 @@ class CreateNominationActivity : AppCompatActivity(), FormEnabledCallback {
         val intent = Intent(this, NominationSubmittedActivity::class.java)
         startActivity(intent)
         this.finish()
-    }
-
-    private fun broadcastToMainActivity(nomination: Nomination) {
-        val intent = Intent(getString(R.string.nomination_receiver_action))
-        intent.putExtra(getString(R.string.nomination_receiver_object), nomination)
-        sendBroadcast(intent)
-        gotoSubmittedActivity()
     }
 
     override fun onFormDataChange(isEnable: Boolean) {

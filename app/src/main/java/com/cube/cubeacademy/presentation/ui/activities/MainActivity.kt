@@ -1,10 +1,6 @@
 package com.cube.cubeacademy.presentation.ui.activities
 
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.os.Build
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -16,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.cube.cubeacademy.R
 import com.cube.cubeacademy.databinding.ActivityMainBinding
 import com.cube.cubeacademy.lib.adapters.NominationsRecyclerViewAdapter
-import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.NominationWithNominee
+import com.cube.cubeacademy.lib.models.singletone.NewNominationHolder
 import com.cube.cubeacademy.presentation.viewmodels.NominationListViewState
 import com.cube.cubeacademy.presentation.viewmodels.NominationViewModel
 import com.google.android.material.snackbar.Snackbar
@@ -29,7 +25,7 @@ import kotlinx.coroutines.flow.onEach
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: NominationViewModel
-
+    private var isLoadedCompleted: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -75,33 +71,27 @@ class MainActivity : AppCompatActivity() {
         val adapter = NominationsRecyclerViewAdapter()
         binding.nominationsList.adapter = adapter
         binding.nominationsList.layoutManager = LinearLayoutManager(this)
-
+        isLoadedCompleted = true
         when (state) {
             is NominationListViewState.Init -> Unit
             is NominationListViewState.ErrorResponse -> state.message?.let { handleMessage(it) }
             is NominationListViewState.SuccessResponse -> {
                 updateNominationListView(state.nominationList)
                 adapter.submitList(state.nominationList)
-                registerReceiver()
                 binding.createButton.setOnClickListener {
                     callNominationCreateActivity()
                 }
             }
 
-            is NominationListViewState.IsLoading -> {
-
-            }
+            is NominationListViewState.IsLoading -> {}
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        unregisterReceiver(newNominationFinderReceiver)
-    }
-
-    private fun registerReceiver() {
-        val filter = IntentFilter(getString(R.string.nomination_receiver_action))
-        registerReceiver(newNominationFinderReceiver, filter)
+    override fun onResume() {
+        super.onResume()
+        if (isLoadedCompleted) {
+            viewModel.refresh()
+        }
     }
 
     private fun callNominationCreateActivity() {
@@ -109,20 +99,4 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private val newNominationFinderReceiver = object : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            if (intent?.action == getString(R.string.nomination_receiver_action)) {
-                val nomination = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-                    intent.getSerializableExtra(getString(R.string.nomination_receiver_object))
-                } else {
-                    intent.getSerializableExtra(
-                        getString(R.string.nomination_receiver_object), Nomination::class.java
-                    )
-                } as? Nomination
-                if (nomination != null) {
-                    viewModel.addNewNomination(nomination)
-                }
-            }
-        }
-    }
 }

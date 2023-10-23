@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.cube.cubeacademy.lib.domain.remote.UseCase
 import com.cube.cubeacademy.lib.models.Nomination
 import com.cube.cubeacademy.lib.models.ResponseWrapper
+import com.cube.cubeacademy.lib.models.singletone.NewNominationHolder
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -35,7 +36,7 @@ class CreateViewModel @Inject constructor(private val useCase: UseCase) : ViewMo
                     is ResponseWrapper.GenericError -> {
                         it.error?.let { msg ->
                             _state.value =
-                                CreateViewState.ErrorResponse("${it.code} : ${msg}")
+                                CreateViewState.ErrorResponse("${it.code} : $msg")
 
                         }
                     }
@@ -45,6 +46,7 @@ class CreateViewModel @Inject constructor(private val useCase: UseCase) : ViewMo
                     }
 
                     is ResponseWrapper.Success -> {
+                        NewNominationHolder.getInstance().addNomination(it.value)
                         _state.value = CreateViewState.SuccessResponse(it.value)
                     }
                 }
