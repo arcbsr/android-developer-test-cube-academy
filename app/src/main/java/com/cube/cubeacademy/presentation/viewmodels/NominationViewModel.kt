@@ -127,8 +127,8 @@ class NominationViewModel @Inject constructor(private val useCase: UseCase) : Vi
     fun refresh() {
         NewNominationHolder.getInstance().getNominations().map {
             addNewNomination(it)
-            NewNominationHolder.getInstance().clearNominations()
         }
+        NewNominationHolder.getInstance().clearNominations()
     }
 
 }
